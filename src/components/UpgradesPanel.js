@@ -17,6 +17,7 @@ class UpgradesPanel extends React.Component{
         let upgradeName = employee + "UpgradeTip-" + upgradeLevel
         let updateUpgrades = () => null
         let checkUpgrades = () => null
+        let costMessage= cost
 
         if (employee == "intern"){
             updateUpgrades = () => this.props.upgradeInterns()
@@ -34,6 +35,20 @@ class UpgradesPanel extends React.Component{
             updateUpgrades = () => this.props.upgradeSeniors()
             checkUpgrades = () => this.props.seniorUpgrades
         }
+
+        if (cost/1000000000000 >= 1){
+            costMessage = cost/1000000000000 + " Trillion"
+        }
+        else if (cost/1000000000 >= 1){
+            costMessage = cost/1000000000 + " Billion"
+        }
+        else if (cost/1000000 >= 1){
+            costMessage = cost/1000000 + " Million"
+        }
+        else if (cost/1000 >= 1){
+            costMessage = cost/1000 + " Thousand"
+        }
+        
 
         return (    
             // check if upgrade has been bought before if yes then return null otherwise render the upgrade
@@ -53,7 +68,7 @@ class UpgradesPanel extends React.Component{
                 
                 {/* shows the tool tip specific to the upgrade */}
                 <ReactTooltip id={employee + "UpgradeTip-" + upgradeLevel} place="bottom" effect="solid">
-                    Doubles the clicks per second of {employee} <br/> Cost: {cost} 
+                    Doubles the clicks per second of {employee} <br/> Cost: {costMessage} 
                 </ReactTooltip>
                 
             </span> : null
@@ -74,13 +89,13 @@ class UpgradesPanel extends React.Component{
                     {this.showUpgrades("junior", 2, 1000000)}
                     {this.showUpgrades("junior", 3, 10000000)}
 
-                    {this.showUpgrades("mid", 1, 1000000)}
-                    {this.showUpgrades("mid", 2, 10000000)}
-                    {this.showUpgrades("mid", 3, 100000000)}
+                    {this.showUpgrades("mid", 1, 100000000)}
+                    {this.showUpgrades("mid", 2, 1000000000)}
+                    {this.showUpgrades("mid", 3, 10000000000)}
                     
-                    {this.showUpgrades("senior", 1, 10000000)}
-                    {this.showUpgrades("senior", 2, 100000000)}
-                    {this.showUpgrades("senior", 3, 1000000000)}
+                    {this.showUpgrades("senior", 1, 100000000000)}
+                    {this.showUpgrades("senior", 2, 1000000000000)}
+                    {this.showUpgrades("senior", 3, 10000000000000)}
                 </div>
             </div>
         )

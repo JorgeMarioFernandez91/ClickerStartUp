@@ -12,7 +12,7 @@ const styles={
 
 function Computer(){
 
-    const [count, setCount] = useState(100000)
+    const [count, setCount] = useState(0)
 
     const [interns, setInterns] = useState(0)
     const [internCost, setInternCost] = useState(15)
@@ -150,28 +150,19 @@ function Computer(){
 
     useEffect(() => {
         setInterval(() => {
-            setCount(prevCount => prevCount + internCps())
-        }, 1000) // 150000 == 150 seconds
-    }, [interns])
+            setCount(prevCount => prevCount + internCps() + juniorCps() + midCps() + seniorCps())
+        }, 1000) 
+    }, [interns, junior, midLevel, senior])
 
-    useEffect(() => {
+    const [shake, setShake] = useState(false)
+
+    function shakeImg(){
+        
         setInterval(() => {
-            setCount(prevCount => prevCount + juniorCps())
-        }, 1000) // 100000 == 100 seconds
-    }, [junior])
-
-    useEffect(() => {
-        setInterval(() => {
-            setCount(prevCount => prevCount + midCps())
-        }, 1000) // 100000 == 100 seconds
-    }, [midLevel])
-
-    useEffect(() => {
-        setInterval(() => {
-            setCount(prevCount => prevCount + seniorCps())
-        }, 1000) // 100000 == 100 seconds
-    }, [senior])
-
+            setShake(prevValue => true)
+        }, [1000])
+        setShake(prevValue => false)
+    }
 
     return(
         <div style={styles} className="row">
@@ -179,50 +170,23 @@ function Computer(){
                 {/* renders the clicks per second of all hired employees and displays it */}
                 <CountTracker count={count} cps={clicksPerSecond()}/>
                
-                <div style={styles} >
+                <div style={styles} onClick={()=>shakeImg()}>
                     {/* image of the computer */}
-                    <img className="image-style" src="http://pixelartmaker.com/art/96a034beedb086d.png" alt="Image of Computer" onClick={incrementMouse}></img>
+                    <img className={shake ? "shake image-style" : "image-style"} src="http://pixelartmaker.com/art/96a034beedb086d.png" alt="Image of Computer" onClick={incrementMouse}></img>
                 </div>
             </div>
             {/* middle panel that renders the individual employees hired */}
             <div className="column" style={styles} style={{overflow: "auto", height:"auto", maxHeight:"80vh"}}>
 
-                {/* <div style={styles} className="row" >
-                    <EmployeePanel 
-                        employeeType={"intern"}
-                        employeeCost={internCost}
-                        employeeTotal={interns}
-                        />
-                </div> */}
-
                 <div style={styles} className="row" >
                     <EmployeePanel 
-                        employeeType={"intern"}
-                        employeeCost={internCost}
-                        employeeTotal={interns}
+                        internCount={interns}
+                        juniorCount={junior}
+                        midCount={midLevel}
+                        seniorCount={senior}
                         />
                 </div>
-                <div style={styles} className="row">
-                    <EmployeePanel 
-                        employeeType={"junior"}
-                        employeeCost={juniorCost}
-                        employeeTotal={junior}
-                        />
-                </div>
-                <div style={styles} className="row">
-                    <EmployeePanel 
-                        employeeType={"mid"}
-                        employeeCost={midLevelCost}
-                        employeeTotal={midLevel}
-                        />
-                </div>
-                <div style={styles} className="row">
-                    <EmployeePanel 
-                        employeeType={"senior"}
-                        employeeCost={seniorCost}
-                        employeeTotal={senior}
-                        />
-                </div>
+
             </div>
             <div className="column" style={styles}>
                 <div style={styles} className="row" >
@@ -253,10 +217,42 @@ function Computer(){
                         {/* data-tip will return tooltip string, which is managed by employeeToolTipMessage()
                             data-for binds the contents of the element to a specific tooltip which is found below 
                             className determines if element is greyed out or not depending if user can affor it*/}
+                            
+                            
+                        {/* Render the Employees and their graphic, type, cost, and total */}
+                        <HireEmployees 
+                            count={count}
 
-                        <div data-tip="" data-for="internTip" className={count < internCost ?  "grey-out" : ""}>
+                            internTotal={interns}
+                            juniorTotal={junior}
+                            midTotal={midLevel}
+                            seniorTotal={senior}
 
-                            {/* Render the Employees and their graphic, type, cost, and total */}
+                            internCost={internCost}
+                            juniorCost={juniorCost}
+                            midCost={midLevelCost}
+                            seniorCost={seniorCost}
+
+                            internValue={internValue}
+                            juniorValue={juniorValue}
+                            midLevelValue={midLevelValue}
+                            seniorValue={seniorValue}
+
+                            internCps={internCps}
+                            juniorCps={juniorCps}
+                            midCps={midCps}
+                            seniorCps={seniorCps}
+
+                            incrementIntern={()=>incrementInterns} 
+                            incrementJunior={()=>incrementJunior}
+                            incrementMidLevel={()=>incrementMidLevel}
+                            incrementSenior={()=>incrementSenior}
+                            />
+
+
+                        {/* <div data-tip="" data-for="internTip" className={count < internCost ?  "grey-out" : ""}>
+
+                            Render the Employees and their graphic, type, cost, and total
                             <HireEmployees 
                                 incrementEmployee={()=>incrementInterns} 
                                 employeeType={"intern"}
@@ -291,9 +287,9 @@ function Computer(){
                                 employeeTotal={senior}
                                 cps={seniorCps}
                                 />
-                        </div>
+                        </div> */}
                         {/* binds a specific tooltip message to a specific element above */}
-                        <ReactTooltip id="internTip" place="left" effect="solid">
+                        {/* <ReactTooltip id="internTip" place="left" effect="solid">
                             {employeeToolTipMessage("intern")}
                         </ReactTooltip>
                         <ReactTooltip id="juniorTip" place="left" effect="solid">
@@ -304,7 +300,7 @@ function Computer(){
                         </ReactTooltip>
                         <ReactTooltip id="seniorTip" place="left" effect="solid">
                             {employeeToolTipMessage("senior")}
-                        </ReactTooltip>
+                        </ReactTooltip> */}
                     </div>
                 </div>
             </div>
