@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 
 const styles={
     border: "2px solid red"
@@ -34,7 +34,7 @@ function CountTracker(props){
     }
 
     return(
-        <div style={styles}>
+        <div >
             {/* <h1>CountTracker</h1> */}
             <h1 className="counter-style">{countMessage} Clicks</h1>
             <h3 className="counter-style">{props.cps.toFixed(1)} CPS</h3>

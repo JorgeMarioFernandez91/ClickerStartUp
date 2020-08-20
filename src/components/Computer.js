@@ -118,9 +118,9 @@ function Computer(){
     // state of shake to true then returning it to false
     function shakeImg(){
         setInterval(() => {
-            setShake(prevValue => true)
-        }, [1000])
-        setShake(prevValue => false)
+            setShake(true)
+        }, [500])
+        setShake(false)
     }
 
     return(
@@ -129,14 +129,14 @@ function Computer(){
                 {/* renders the clicks per second of all hired employees and displays it */}
                 <CountTracker count={count} cps={clicksPerSecond()}/>
                
-                <div style={styles} onClick={()=>shakeImg()}> {/* image of the computer */}
+                <div  onClick={()=>shakeImg()}> {/* image of the computer */}
                     <img className={shake ? "shake image-style" : "image-style"} src="http://pixelartmaker.com/art/96a034beedb086d.png" alt="Image of Computer" onClick={incrementMouse}></img>
                 </div>
             </div>
 
             {/* middle panel that renders the individual employees hired */}
             <div className="column" style={{overflow: "auto", height:"auto", maxHeight:"80vh"}}>
-                <div style={styles} className="row" >
+                <div className="row" >
                     <EmployeePanel 
                         internCount={interns}
                         juniorCount={junior}
@@ -147,8 +147,7 @@ function Computer(){
             </div>
 
             <div className="column" >
-                <div style={styles} className="row" >
-                    <p>Upgrades</p>
+                <div className="row" >
                     <UpgradesPanel 
                         count={count}
                         setCount={setCount}

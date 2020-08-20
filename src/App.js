@@ -1,18 +1,13 @@
 import React from 'react';
 import './App.css';
 
-import EmployeePanel from "./components/EmployeePanel"
-import ComputerPanel from "./components/ComputerPanel"
-import HirePanel from "./components/HirePanel"
+import Main from "./components/Main"
 
-const style={
-  textAlign: "center"
-}
 
 function App() {
   return (
-    <div>
-      <ComputerPanel />
+    <div >
+      <Main />
     </div>
   );
 }

@@ -14,6 +14,21 @@ class HireEmployees extends React.Component{
     }
 
     showEmployeeButton(employee, total, cost, cpsTotal, cpsEach, func){
+
+        let costMessage = cost
+
+        if (cost/1000000000000 >= 1){
+            costMessage = (cost/1000000000000).toFixed(2) + " Trillion"
+        }
+        else if (cost/1000000000 >= 1){
+            costMessage = (cost/1000000000).toFixed(2) + " Billion"
+        }
+        else if (cost/1000000 >= 1){
+            costMessage = (cost/1000000).toFixed(2) + " Million"
+        }
+        else if (cost/1000 >= 1){
+            costMessage = (cost/1000).toFixed(2) + " Thousand"
+        }
         
         return(
             // display data-tip for each employee
@@ -29,10 +44,10 @@ class HireEmployees extends React.Component{
 
                         <div className="column-2-hire-name-cost">
                             <div className="row"> <h3>{employee} Clicker</h3> </div>
-                            <div className="row-hire-cost"> {cost} </div>
+                            <div className="row-hire-cost"> {costMessage} </div>
                         </div>
                         
-                        <div className="column-3-hire-total"> <h1 >{total}</h1> </div>
+                        <div className="column-3-hire-total"> <h1>{total}</h1> </div>
                     </div>
                 </div>
                  {/* binds the tooltip message to the correct employee button */}

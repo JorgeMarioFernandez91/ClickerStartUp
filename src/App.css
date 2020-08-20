@@ -21,9 +21,11 @@
 }
 
 .row-hire-cost {
-    max-width: 60%;
+    /* max-width: 60%; */
+    min-width: 150px;
     position: absolute;
     bottom: 5%;
+    text-align: left;
 }
 
 .column-3-hire-total {
@@ -71,6 +73,8 @@ img.image-style {
     position: relative;
     background-size: cover;
     min-height: 90px;
+    border: 2px solid #567622;
+    border-bottom: 1px solid #567622;
 }
 
 /* Clear floats after the columns */
@@ -106,3 +110,19 @@ img.image-style {
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
 
+.main-background-color {
+    
+}
+
+.employee-background-color {
+
+}
+
+.upgrade-background-color {
+
+}
+
+h3.format-margin {
+    margin-top: 0px;
+    padding-top: 10px;
+}

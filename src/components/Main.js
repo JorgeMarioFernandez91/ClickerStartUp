@@ -1,12 +1,11 @@
 import React from "react"
-import CountTracker from "./CountTracker"
 import Computer from "./Computer"
 
 const styles={
-    border: "2px solid red"
+    textAlign: "center"
 }
 
-function FrontEnd(){
+function Main(){
     return(
         <div style={styles}>
             <h1>Clicker StartUp</h1>
@@ -15,4 +14,4 @@ function FrontEnd(){
     )
 }
 
-export default FrontEnd
+export default Main
