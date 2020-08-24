@@ -1,4 +1,5 @@
 import React from "react"
+import FormatNumbers from "./FormatNumbers"
 
 const styles={
     border: "2px solid red"
@@ -7,31 +8,7 @@ const styles={
 function CountTracker(props){
 
     let count = props.count.toFixed(0)
-    let countMessage = count
-
-    let cps = props.cps.toFixed(1)
-    let cpsMessage = cps
-
-    if (count/1000000000000 >= 1){
-        countMessage = (count/1000000000000).toFixed(3) + " Trillion"
-    }
-    else if (count/1000000000 >= 1){
-        countMessage = (count/1000000000).toFixed(3) + " Billion"
-    }
-    else if (count/1000000 >= 1){
-        countMessage = (count/1000000).toFixed(3) + " Million"
-    }
-        
-
-    if (cps/1000000000000 >= 1){
-        cpsMessage = (cps/1000000000000).toFixed(3) + " Trillion"
-    }
-    else if (cps/1000000000 >= 1){
-        cpsMessage = (cps/1000000000).toFixed(3) + " Billion"
-    }
-    else if (cps/1000000 >= 1){
-        cpsMessage = (cps/1000000).toFixed(3) + " Million"
-    }
+    let countMessage = <FormatNumbers formatNumber={count} decimals={3} />
 
     return(
         <div >

@@ -8,7 +8,7 @@ const styles={
 function Main(){
     return(
         <div style={styles}>
-            <h1>Clicker StartUp</h1>
+            <h1 >CLICKER START UP</h1>
             <Computer />
         </div>
     )

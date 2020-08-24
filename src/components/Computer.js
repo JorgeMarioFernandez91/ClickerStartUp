@@ -130,7 +130,7 @@ function Computer(){
                 <CountTracker count={count} cps={clicksPerSecond()}/>
                
                 <div  onClick={()=>shakeImg()}> {/* image of the computer */}
-                    <img className={shake ? "shake image-style" : "image-style"} src="http://pixelartmaker.com/art/96a034beedb086d.png" alt="Image of Computer" onClick={incrementMouse}></img>
+                    <img className={shake ? "shake image-style zoom" : "image-style zoom"} src="http://pixelartmaker.com/art/96a034beedb086d.png" alt="Image of Computer" onClick={incrementMouse}></img>
                 </div>
             </div>
 

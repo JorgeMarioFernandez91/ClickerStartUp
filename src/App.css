@@ -6,7 +6,6 @@
   }
 
 .column-1-hire-image {
-    /* text-align: center; */
     max-width: 20%;
     position: absolute;
     max-height: 96%;
@@ -16,28 +15,40 @@
 .column-2-hire-name-cost {
     max-width: 60%;
     position: absolute;
-    /* top: 25%; */
     margin-left: 35%;
+    max-width: 45%;
 }
 
-.row-hire-cost {
-    /* max-width: 60%; */
-    min-width: 150px;
-    position: absolute;
-    bottom: 5%;
+.row-employee-name {
+    min-width: 100%;
     text-align: left;
+    max-height: 50px;
+    /* position: absolute; */
+    /* top: 50px; */
+    /* bottom: 5%; */
+    /* top: 30px; */
+}
+
+.row-employee-hire-cost {
+    min-width: 100%;
+    text-align: left;
+    max-height: 30px;
+    /* position: absolute; */
+    /* top: 50px;
+    bottom: 5%; */
+    /* top: 30px; */
+    /* max-width: 45%; */
 }
 
 .column-3-hire-total {
     max-width: 20%;
     position: absolute;
-    /* top: 25%; */
     margin-left: 82%;
 }
 
 /* ensures we always have a mouse pointer and not 
    a text selection cursor */
-   div {   
+div {   
     cursor: default;
 }
 
@@ -68,13 +79,27 @@ img.image-style {
 }
 
 .row-hire-button {
-    background-image: url(./components/images/button-template.png) ;
+    background-image: url(./components/images/button-template-white.png) 0 0 no-repeat fixed;
+    background-color: #8ABC36;
     background-repeat: no-repeat;
     position: relative;
     background-size: cover;
     min-height: 90px;
-    border: 2px solid #567622;
-    border-bottom: 1px solid #567622;
+    border: 6px solid #567622;
+    border-bottom: 6px solid #567622;
+    margin-top: 5px;
+}
+
+.row-hire-button-highlight {
+    background-image: url(./components/images/button-template-white.png) 0 0 no-repeat fixed;
+    background-color: #8ABC36;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    min-height: 90px;
+    border: 6px solid #fdfdfc;
+    border-bottom: 6px solid #fdfdfc;
+    margin-top: 5px;
 }
 
 /* Clear floats after the columns */
@@ -110,19 +135,39 @@ img.image-style {
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
 
-.main-background-color {
-    
-}
-
-.employee-background-color {
-
-}
-
-.upgrade-background-color {
-
-}
-
 h3.format-margin {
     margin-top: 0px;
     padding-top: 10px;
+}
+
+.zoom {
+    transition: transform .5s; /* Animation */
+    margin: 0 auto;
+  }
+  
+.zoom:hover {
+    transform: scale(1.1);
+  }
+
+.new-border:hover {
+    border: 6px solid #7a0707;
+}
+
+h1, h3, h4, p {
+    font-family: Rockwell,Courier Bold,Courier,Georgia,Times,Times New Roman,serif;
+}
+
+h3.font-style {
+    font-family: Rockwell,Courier Bold,Courier,Georgia,Times,Times New Roman,serif;
+    margin: 0;
+    margin-top: 20px;
+}
+
+p.font-style {
+    font-family: Rockwell,Courier Bold,Courier,Georgia,Times,Times New Roman,serif;
+    margin: 0;
+}
+
+.view-border {
+    border: 2px solid red;
 }

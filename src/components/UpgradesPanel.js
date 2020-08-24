@@ -1,5 +1,6 @@
 import React from "react"
 import ReactTooltip from 'react-tooltip'
+import FormatNumbers from "./FormatNumbers"
 
 const styles = {
     border: "4px solid #5E1B45",
@@ -25,20 +26,8 @@ class UpgradesPanel extends React.Component{
     showUpgrades(employee, upgradeName, upgradeStatus, setUpgradeStatus, updateUpgrades, cost, title) {
 
         let upgradeTip = employee + "UpgradeTip-" + upgradeName
-        let costMessage= cost
-
-        if (cost/1000000000000 >= 1){
-            costMessage = cost/1000000000000 + " Trillion"
-        }
-        else if (cost/1000000000 >= 1){
-            costMessage = cost/1000000000 + " Billion"
-        }
-        else if (cost/1000000 >= 1){
-            costMessage = cost/1000000 + " Million"
-        }
-        else if (cost/1000 >= 1){
-            costMessage = cost/1000 + " Thousand"
-        }
+        
+        let costMessage = <FormatNumbers formatNumber={cost} decimals={2} />
 
         return (    
             // check if upgrade has been bought before if yes then return null otherwise render the upgrade
@@ -58,7 +47,8 @@ class UpgradesPanel extends React.Component{
                 
                 {/* shows the tool tip specific to the upgrade */}
                 <ReactTooltip id={employee + "UpgradeTip-" + upgradeName} place="bottom" effect="solid">
-                    {title.toUpperCase()} <br/> Doubles the clicks per second of {employee} <br/> Cost: {costMessage} 
+                   <h4>{title.toUpperCase()}  </h4>
+                   <p> Doubles the clicks per second of {employee} <br/> Cost: {costMessage} </p>
                 </ReactTooltip>
             </span> 
         )
