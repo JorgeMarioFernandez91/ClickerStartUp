@@ -3,6 +3,8 @@ import CountTracker from "./CountTracker"
 import HireEmployees from "./HireEmployees"
 import EmployeePanel from "./EmployeePanel"
 import UpgradesPanel from "./UpgradesPanel"
+import IntroPanel from "./IntroPanel"
+import WinPanel from "./WinPanel"
 import "../App.css"
 
 const styles={
@@ -11,7 +13,7 @@ const styles={
 
 function Computer(){
     // count keeps track of the total clicks that have been clicked
-    const [count, setCount] = useState(10000000)
+    const [count, setCount] = useState(0)
     
     // sets and remembers the state of: cost, value, and nextCost of each employee
     const [interns, setInterns] = useState(0)
@@ -125,6 +127,8 @@ function Computer(){
 
     return(
         <div className="row">
+            <IntroPanel />
+            <WinPanel cps={clicksPerSecond()}/>
             <div className="column">
                 {/* renders the clicks per second of all hired employees and displays it */}
                 <CountTracker count={count} cps={clicksPerSecond()}/>

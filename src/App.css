@@ -1,5 +1,40 @@
 /* App css */
 
+.intro {
+    background-color: #8A36BC;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 500px;
+    min-height: 500px;
+    position: absolute;
+    z-index: 10;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.win {
+    background-color: #8A36BC;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 500px;
+    min-height: 200px;
+    position: absolute;
+    z-index: 10;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.intro-button {
+    background-color: violet;
+    padding-right: 100px;
+    padding-left: 25%;
+    margin-left: 210px;
+    margin-right: 210px;
+    height: 25px;
+}
+
 .column {
     float: left;
     width: 33%;
@@ -168,6 +203,24 @@ p.font-style {
     margin: 0;
 }
 
+p.intro-style {
+    font-size: 25px;
+    font-weight: bold;
+}
+
 .view-border {
     border: 2px solid red;
 }
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
